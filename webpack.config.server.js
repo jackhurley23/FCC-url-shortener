@@ -10,6 +10,10 @@ module.exports = {
   watch: true,
   target: "node",
   externals: [nodeExternals({ whitelist: ["webpack/hot/poll?1000"] })],
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   module: {
     rules: [
       {
