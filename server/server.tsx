@@ -2,21 +2,25 @@ import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { hot } from "react-hot-loader";
-import setupMiddware from "./middleware";
 
-import { connect } from "./db";
+import path from "path";
+import serveStatic from "serve-static";
+import setupMiddware from "./middleware";
 
 import { App } from "../common/App";
 import { apiRouter } from "./api";
+import { connect } from "./db";
 
 /* tslint:disable-next-line */
 import "regenerator-runtime/runtime";
 
 export const app = express();
-export default hot(module)(app);
+export default app;
 
 connect();
 setupMiddware(app);
+
+app.use("/dist", serveStatic(__dirname));
 
 app.use("/api", apiRouter);
 
@@ -28,11 +32,11 @@ app.get("*", (req, res) => {
         <head>
             <meta charset="utf-8">
             <meta http-equiv="x-ua-compatible" content="ie=edge">
-            <title>HOT HMR all the things!</title>
+            <title>URL Shortener</title>
             <meta name="description" content="">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style type="text/css">
-                /* http://meyerweb.com/eric/tools/css/reset/ 
+                /* http://meyerweb.com/eric/tools/css/reset/
                 v2.0 | 20110126
                 License: none (public domain)
                 */
@@ -46,8 +50,8 @@ app.get("*", (req, res) => {
                 dl, dt, dd, ol, ul, li,
                 fieldset, form, label, legend,
                 table, caption, tbody, tfoot, thead, tr, th, td,
-                article, aside, canvas, details, embed, 
-                figure, figcaption, footer, header, hgroup, 
+                article, aside, canvas, details, embed,
+                figure, figcaption, footer, header, hgroup,
                 menu, nav, output, ruby, section, summary,
                 time, mark, audio, video {
                     margin: 0;
@@ -58,7 +62,7 @@ app.get("*", (req, res) => {
                     vertical-align: baseline;
                 }
                 /* HTML5 display-role reset for older browsers */
-                article, aside, details, figcaption, figure, 
+                article, aside, details, figcaption, figure,
                 footer, header, hgroup, menu, nav, section {
                     display: block;
                 }
@@ -91,7 +95,7 @@ app.get("*", (req, res) => {
         </head>
         <body style="margin:0">
             <div id="root"></div>
-            <script src="http://localhost:3001/client.js"></script>
+            <script src="/dist/client.js"></script>
         </body>
     </html>`;
 

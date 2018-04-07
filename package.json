@@ -1,5 +1,5 @@
 {
-  "name": "jhurley23-url-shortener",
+  "name": "jackhurley23-url-shortener",
   "version": "0.1.0",
   "scripts": {
     "start:server":
@@ -30,6 +30,7 @@
     "react-dom": "16.3.0",
     "react-hot-loader": "^4.0.0",
     "regenerator": "^0.12.3",
+    "serve-static": "^1.13.2",
     "start-server-webpack-plugin": "2.2.5",
     "webpack": "^4.4.1",
     "webpack-dev-server": "3.1.1",

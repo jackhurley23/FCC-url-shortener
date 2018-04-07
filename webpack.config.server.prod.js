@@ -8,6 +8,9 @@ module.exports = {
   entry: ["./server/index.ts"],
   target: "node",
   externals: [nodeExternals()],
+  node: {
+    __dirname: false
+  },
   module: {
     rules: [
       {
