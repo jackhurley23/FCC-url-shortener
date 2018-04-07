@@ -1,6 +1,8 @@
 {
   "rules": {
-    "no-submodule-imports": [true, "react-dom/server"]
+    "no-submodule-imports": [true, "react-dom/server"],
+    "no-console": [false],
+    "object-literal-sort-keys": [false]
   },
   "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"]
 }

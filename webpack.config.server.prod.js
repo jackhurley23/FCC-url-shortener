@@ -2,14 +2,12 @@ const webpack = require("webpack");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const StartServerPlugin = require("start-server-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  mode: "development",
-  entry: ["webpack/hot/poll?1000", "./server/index.ts"],
-  watch: true,
+  mode: "production",
+  entry: ["./server/index.ts"],
   target: "node",
-  externals: [nodeExternals({ whitelist: ["webpack/hot/poll?1000"] })],
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -18,8 +16,7 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              babelrc: true,
-              plugins: ["react-hot-loader/babel"]
+              babelrc: true
             }
           },
           "awesome-typescript-loader"
@@ -36,14 +33,11 @@ module.exports = {
     extensions: [".ts", ".js", ".tsx", ".jsx"]
   },
   plugins: [
-    new StartServerPlugin("server.js"),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new Dotenv()
+    new webpack.NoEmitOnErrorsPlugin()
     // new webpack.DefinePlugin({
     //   "process.env": { BUILD_TARGET: JSON.stringify("server") }
     // })
   ],
-  output: { path: path.join(__dirname, ".build"), filename: "server.js" }
+  output: { path: path.join(__dirname, "dist"), filename: "server.js" }
 };

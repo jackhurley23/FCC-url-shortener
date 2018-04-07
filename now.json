@@ -1,0 +1,7 @@
+{
+  "env": {
+    "DB_HOST": "@fcc-url-shortener-dbhost",
+    "DB_USER": "@fcc-url-shortener-dbuser",
+    "DB_PASS": "@fcc-url-shortener-dbpass"
+  }
+}
