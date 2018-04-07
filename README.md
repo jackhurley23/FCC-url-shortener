@@ -1,6 +1,13 @@
-Starter project for HMR with backend routes and server/client-side react.
-Clone this repo and run `yarn` then `npm start`
+# Url Shortener
 
-Adapted from [this](https://hackernoon.com/hot-reload-all-the-things-ec0fed8ab0) article.
+## freeCodeCamp
 
-Implements Typescript on both the frontend and server.
+URL shortener for freeCodeCamp's API and Microservice Project
+
+User Stories:
+
+* I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.
+* If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.
+* When I visit that shortened URL, it will redirect me to my original link.
+
+Starter project from [https://github.com/jackhurley23/ts-hot-reloading-server-client](https://github.com/jackhurley23/ts-hot-reloading-server-client)
